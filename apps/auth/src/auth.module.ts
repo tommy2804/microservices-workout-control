@@ -13,6 +13,7 @@ import {
   FriendRequestEntity,
   ConversationEntity,
   MessageEntity,
+  FeedPostEntity,
 } from '@app/shared';
 
 import { JwtGuard } from './jwt.guard';
@@ -38,6 +39,7 @@ import { JwtStrategy } from './jwt-strategy';
       FriendRequestEntity,
       ConversationEntity,
       MessageEntity,
+      FeedPostEntity,
     ]),
   ],
   controllers: [AuthController],

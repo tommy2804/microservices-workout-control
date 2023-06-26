@@ -14,6 +14,7 @@ export * from './entities/conversation.entity';
 export * from './entities/message.entity';
 export * from './entities/exercise.entity';
 export * from './entities/workout.entity';
+export * from './entities/feed.posts.entity';
 // interfaces - user/shared
 export * from './interfaces/user-request.interface';
 export * from './interfaces/user-jwt.interface';

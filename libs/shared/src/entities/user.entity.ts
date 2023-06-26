@@ -6,6 +6,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { ConversationEntity } from './conversation.entity';
+import { FeedPostEntity } from './feed.posts.entity';
 
 import { FriendRequestEntity } from './friend-request.entity';
 import { MessageEntity } from './message.entity';
@@ -53,4 +54,7 @@ export class UserEntity {
 
   @OneToMany(() => MessageEntity, (messageEntity) => messageEntity.user)
   messages: MessageEntity[];
+
+  // @OneToMany(() => FeedPostEntity, (feedPostEntity) => feedPostEntity.author)
+  // feedPosts: FeedPostEntity[];
 }
