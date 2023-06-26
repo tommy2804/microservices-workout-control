@@ -61,6 +61,23 @@ services:
       - /usr/src/app/node_modules
     command: npm run start:dev chat # overrides CMD from dockerfile
 
+  exercises:
+    build:
+      context: ./
+      dockerfile: ./apps/exercises/Dockerfile
+    ports:
+      - '3300:3300'
+    env_file:
+      - .env
+    depends_on:
+      - rabbitmq
+      - postgres
+      - presence
+    volumes:
+      - .:/usr/src/app # any change to base folder should be reflected
+      - /usr/src/app/node_modules
+    command: npm run start:dev exercises # overrides CMD from dockerfile
+
   api:
     build:
       context: ./
@@ -79,13 +96,19 @@ services:
     command: npm run start:dev api
 
   postgres:
+    container_name: postgredb
     image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: tommy2804
     env_file:
       - .env
-    ports:
-      - '5432:5432'
     volumes:
       - ./db/data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    expose:
+      - 5432
 
   postgres_admin:
     image: dpage/pgadmin4

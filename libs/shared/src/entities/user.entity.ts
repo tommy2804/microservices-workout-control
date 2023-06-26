@@ -24,6 +24,12 @@ export class UserEntity {
   @Column({ unique: true })
   email: string;
 
+  // @Column({ nullable: true })
+  // phone: string;
+
+  // @Column({ nullable: true })
+  // dateOfBirth: Date;
+
   @Column({ select: false })
   password: string;
 

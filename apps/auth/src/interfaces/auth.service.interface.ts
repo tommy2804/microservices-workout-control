@@ -9,7 +9,9 @@ export interface AuthServiceInterface {
   findByEmail(email: string): Promise<UserEntity>;
   findById(id: number): Promise<UserEntity>;
   hashPassword(password: string): Promise<string>;
-  register(newUser: Readonly<NewUserDTO>): Promise<UserEntity>;
+  register(
+    newUser: Readonly<NewUserDTO>,
+  ): Promise<{ token: string; user: UserEntity }>;
   doesPasswordMatch(password: string, hashedPassword: string): Promise<boolean>;
   validateUser(email: string, password: string): Promise<UserEntity>;
   login(existingUser: Readonly<ExistingUserDTO>): Promise<{
