@@ -53,6 +53,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/chat/tsconfig.app.json"
       }
+    },
+    "exercises": {
+      "type": "application",
+      "root": "apps/exercises",
+      "entryFile": "main",
+      "sourceRoot": "apps/exercises/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/exercises/tsconfig.app.json"
+      }
     }
   }
 }

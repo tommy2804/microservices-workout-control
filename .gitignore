@@ -4,6 +4,7 @@
 /db/data
 /redis/data
 
+
 # Logs
 logs
 *.log
@@ -20,7 +21,7 @@ lerna-debug.log*
 /coverage
 /.nyc_output
 
-# IDEs and editors
+# IDes and editors
 /.idea
 .project
 .classpath

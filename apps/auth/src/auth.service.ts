@@ -54,7 +54,9 @@ export class AuthService implements AuthServiceInterface {
     return bcrypt.hash(password, 12);
   }
 
-  async register(newUser: Readonly<NewUserDTO>): Promise<UserEntity> {
+  async register(
+    newUser: Readonly<NewUserDTO>,
+  ): Promise<{ token: string; user: UserEntity }> {
     const { firstName, lastName, email, password } = newUser;
 
     const existingUser = await this.findByEmail(email);
@@ -69,11 +71,16 @@ export class AuthService implements AuthServiceInterface {
       firstName,
       lastName,
       email,
+
       password: hashedPassword,
     });
 
     delete savedUser.password;
-    return savedUser;
+
+    const jwt = await this.jwtService.signAsync({ savedUser });
+
+    delete savedUser.password;
+    return { token: jwt, user: savedUser };
   }
 
   async doesPasswordMatch(
